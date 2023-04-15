@@ -1,25 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="login.css">
-    <link rel="icon" href="img/logowebc-modified.png" />
-    <script src="validation.js"></script>
-    <script
-      src="https://kit.fontawesome.com/4cd8de584e.js"
-      crossorigin="anonymous"
-    ></script>
-    <title>WebComic</title>
-  </head>
+
+<head>
+
+<?php include './framework/header.php';?>
+<link rel="stylesheet" href="./css/login.css">
+
+</head>
 
   <body>
     <script
@@ -30,7 +17,7 @@
 
     <!-- header -->
 
-    <?php include 'navbar.php';?>
+    <?php include './components/navbar.php';?>
 
     <!-- content -->
 
@@ -48,7 +35,11 @@
 
     <!-- footer -->
 
-    <footer><?php include 'footer.php';?></footer>
+    <footer>
+      
+    <?php include './components/footer.php';?>
+
+  </footer>
 
   </body>
 </html>
