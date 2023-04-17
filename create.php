@@ -14,6 +14,16 @@
   <title>WebComic</title>
 </head>
 
+<!-- margin -->
+
+<style>
+
+  footer {
+    margin-top: 720px;
+  }
+  
+</style>
+
 <body>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
@@ -30,7 +40,7 @@
   require_once './functions/cleaner.php';
   include './framework/header.php';
 
-  //initialize all variable
+  // Inisialisasi variabel
   $email = $username = $password = "";
   $regex = '/^(?=.*[0-9])(?=.*[A-Z]).{8,20}$/';
   $passHash = "";
@@ -50,7 +60,7 @@
           $emailErr = "Format email belum sesuai";
           $isValid = 0;
         } else {
-          // TODO 1: Check if email is exist or not
+          // Cek email ada atau tidak
           $queryCheckEmail = $conn->prepare("SELECT email FROM user WHERE email = ?");
           $queryCheckEmail->bind_param("s", $email);
           $queryCheckEmail->execute();
@@ -68,13 +78,13 @@
       if (empty($_POST['username'])) {
         $usernameErr = "Mohon isi field username";
         $isValid = 0;
-    } else {
+      } else {
         $username = cleaner($_POST['username']);
         if (strlen($username) < 5) {
-            $usernameErr = "Panjang username harus lebih dari 5 karakter";
-            $isValid = 0;
+          $usernameErr = "Panjang username harus lebih dari 5 karakter";
+          $isValid = 0;
         }
-    }
+      }
 
       // Validasi Password 
       if (empty($_POST['password'])) {
@@ -88,10 +98,10 @@
         }
       }
 
-      // Bila Valid 
+      // Ketika Valid 
       if ($isValid == 1) {
         $passHash = password_hash($password, PASSWORD_BCRYPT);
-        // TODO 2 : Insert to database
+        // Maka akan masukkan data
         $queryRegister = $conn->prepare("INSERT INTO user(email, username, password) VALUES (?,?,?)");
         $queryRegister->bind_param("sss", $email, $username, $passHash);
       }
@@ -107,15 +117,21 @@
     <form method="POST">
       <label>Email</label><br>
       <input type="email" name="email" id="email" value="<?= $email ?>">
-      <small class="text-danger" id="emailError"><?= $emailErr ?></small>
+      <small class="text-danger" id="emailError">
+        <?= $emailErr ?>
+      </small>
       <br>
       <label>Username</label><br>
       <input type="text" name="username" id="username" value="<?= $username ?>">
-      <small class="text-danger" id="usernameError"><?= $usernameErr ?></small>
+      <small class="text-danger" id="usernameError">
+        <?= $usernameErr ?>
+      </small>
       <br>
       <label>Password</label><br>
       <input type="password" name="password" id="password" value="<?= $password ?>">
-      <small class="text-danger" id="passwordError"><?= $passwordErr ?></small>
+      <small class="text-danger" id="passwordError">
+        <?= $passwordErr ?>
+      </small>
       <br>
       <div class="form-check cb">
         <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
@@ -124,35 +140,36 @@
         </label>
       </div>
       <p class="term">*for terms and conditions</p>
-      <button type="submit" value="submit" id="btn-kirim" name="signUp">Create</button>
+      <button type="submit" value="submit" id="btn-kirim" name="signUp" onclick="login.php">Create</button>
     </form>
     <p class="create">Have account? Sign in <a href="login.php">here</a>.</p>
   </div>
 
-  <?php
-    if ($queryRegister->execute()) {
-    ?>
-
-        <script>
-            Swal.fire({
-                icon: 'success',
-                title: 'Berhasil',
-                text: 'Registrasi berhasil silahkan login'
-            }).then(function() {
-                document.location.href = './index.php';
-            })
-        </script>;
-    <?php
-        $conn->close();
-    }
-
-    ?>
 
   <!-- footer -->
 
   <footer>
     <?php include './components/footer.php'; ?>
   </footer>
+
+    <?php
+    if ($queryRegister->execute()) {
+      ?>
+
+      <script>
+        Swal.fire({
+          icon: 'success',
+          title: 'Berhasil',
+          text: 'Registrasi berhasil silahkan login'
+        }).then(function () {
+          document.location.href = './index.php';
+        })
+      </script>;
+      <?php
+      $conn->close();
+    }
+
+    ?>
 
 </body>
 
