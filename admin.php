@@ -88,9 +88,8 @@ require_once './config/dbcon.php';
                 <td><?= $data['judul'] ?></td>
                 <td><?= $data['author'] ?></td>
                 <td><?= $data['idUploader'] ?></td>
-                <td><a href="edit.php&id=<?= $data['id'] ?>" class="btn btn-outline-warning px-3 py-1"><i class="bi bi-pencil me-2"></i>Edit</a></td>
-                <td><a href="hapus.php&id=<?= $data['id'] ?>" class="btn btn-outline-danger px-3 py-1"><i class="bi bi-trash2-fill me-2"></i>Delete</a></td>
-            </tr>
+                <td><a class="edit" href="edit.php?id=<?php echo $data['id']; ?>">Edit</a> |
+				        <a class="hapus" href="hapus.php?id=<?php echo $data['id']; ?>">Hapus</a></td>
         <?php
             $num++;
         }
