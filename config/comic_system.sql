@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2023 at 05:01 PM
+-- Generation Time: Apr 17, 2023 at 09:39 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.26
 
@@ -77,21 +77,22 @@ CREATE TABLE `komik` (
   `id` int(11) NOT NULL,
   `judul` varchar(255) NOT NULL,
   `author` varchar(255) NOT NULL,
-  `idUploader` int(11) NOT NULL
+  `idUploader` int(11) NOT NULL,
+  `picture` mediumblob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `komik`
 --
 
-INSERT INTO `komik` (`id`, `judul`, `author`, `idUploader`) VALUES
-(413, 'Jujutsu Kaisen', 'Gege Akutami', 88),
-(442, 'One Punch Man', 'One,Yusuke Murata', 89),
-(445, 'Slam Dunk', 'Takehiko Inoue', 90),
-(541, 'One Piece', 'Eiichiro Oda', 88),
-(544, 'Another', 'Yukito Ayatsuji', 89),
-(552, 'Martial God Asura', '修罗武神', 90),
-(565, 'Black Clover', 'Yuki Tabata', 90);
+INSERT INTO `komik` (`id`, `judul`, `author`, `idUploader`, `picture`) VALUES
+(413, 'Jujutsu Kaisen', 'Gege Akutami', 88, ''),
+(442, 'One Punch Man', 'One,Yusuke Murata', 89, ''),
+(445, 'Slam Dunk', 'Takehiko Inoue', 90, ''),
+(541, 'One Piece', 'Eiichiro Oda', 88, ''),
+(544, 'Another', 'Yukito Ayatsuji', 89, ''),
+(552, 'Martial God Asura', '修罗武神', 90, ''),
+(565, 'Black Clover', 'Yuki Tabata', 90, '');
 
 -- --------------------------------------------------------
 
@@ -113,7 +114,8 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `email`, `username`, `password`) VALUES
 (140, 'jackr@gmail.com', 'JackReader123', '13141'),
 (141, 'mangauwu@gmail.com', 'MangaReader982', '41211'),
-(142, 'kimkim@gmail.com', 'Kimmyrrl21', '14413');
+(142, 'kimkim@gmail.com', 'Kimmyrrl21', '14413'),
+(143, 'mamang@gmail.com', 'Matt_27', '$2y$10$FSCO.WkrglFFqGOnks73JO76NeqRPa6/xLojQmYS5uF8I30ggQh8y');
 
 --
 -- Indexes for dumped tables
@@ -170,7 +172,7 @@ ALTER TABLE `komik`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=144;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
