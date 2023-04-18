@@ -20,8 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   }
 
   if ($isValid == 1) {
-    // TODO 1 : Bila validasi berhasil maka mulai proses login
-    $queryLogin = $conn->prepare("SELECT username, email, password FROM users WHERE email = ?");
+
+    $queryLogin = $conn->prepare("SELECT username, email, password FROM user WHERE email = ?");
     $queryLogin->binad_param("s", $email);
     $queryLogin->execute();
     $resLogin = $queryLogin->get_result();
@@ -33,11 +33,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['id_user'] = $rowResLogin['id'];
         $_SESSION['username'] = $rowResLogin['username'];
         $_SESSION['email'] = $rowResLogin['email'];
-        header("Location: ./index.php?page=dashboard");
+        header("Location: ./home.php");
       } else {
-        echo "<script>
+        $queryLogin = $conn->prepare("SELECT username, email, password FROM user WHERE email = ?");
+        $queryLogin->binad_param("s", $email);
+        $queryLogin->execute();
+        $resLogin = $queryLogin->get_result();
+        $numResLogin = $resLogin->num_rows;
+        if ($verifPass) {
+          $_SESSION['id_user'] = $rowResLogin['id'];
+          $_SESSION['username'] = $rowResLogin['username'];
+          $_SESSION['email'] = $rowResLogin['email'];
+          header("Location: ./admin.php");
+        } else {
+          echo "<script>
                 alert('Cridenial anda salah');
                 </script>";
+        }
       }
     } else {
       echo "<script>
