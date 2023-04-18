@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once '/config/dbcon.php';
-require_once '/functions/cleaner.php';
+require_once 'config/dbcon.php';
+require_once 'functions/cleaner.php';
 $email = $password = "";
 $emailErr = $passwordErr = "";
 $isValid = 1;
