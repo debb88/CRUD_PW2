@@ -87,8 +87,8 @@
               <td>
                 <?= $data['idUploader'] ?>
               </td>
-              <td><a class="edit" href="edit.php?id=<?php echo $data['id']; ?>">Edit</a> |
-                <a class="hapus" href="hapus.php?id=<?php echo $data['id']; ?>">Hapus</a>
+              <td><a class="edit" href="edit.php?id=<?php $data['id']; ?>">Edit</a> |
+                <a class="hapus" href="hapus.php?id=<?php $data['id']; ?>">Hapus</a>
               </td>
               <?php
               $num++;
