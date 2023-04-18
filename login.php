@@ -54,8 +54,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html lang="en">
 <?php
 $head = "LOGIN PAGE";
-include './framework/bootstrap.php';
-include './framework/sweetalert.php';
+include 'framework/bootstrap.php';
+include 'framework/sweetalert.php';
 ?>
 
 <body class="back-color">
