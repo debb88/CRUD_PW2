@@ -1,5 +1,5 @@
 <?php
-require_once '.config/dbcon.php';
+require '.config/dbcon.php';
 require_once '.functions/cleaner.php';
 $comicName = $comicAuthor = $IDUploader = " ";
 $comicNameErr = $comicAuthorErr = $IDUploaderErr = $pictureErr = " ";
