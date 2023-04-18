@@ -68,7 +68,7 @@
           <?php
 
           $num = 1;
-          $queryData = $conn->query("SELECT judul,
+          $queryData = $conn->query("SELECT id,judul,
                                         author,
                                         idUploader
                                         FROM komik");
@@ -76,7 +76,7 @@
             ?>
             <tr>
               <th scope="row">
-                <?= $num ?>
+                <?= $data['id'] ?>
               </th>
               <td>
                 <?= $data['judul'] ?>
