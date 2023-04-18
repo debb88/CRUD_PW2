@@ -69,7 +69,8 @@ include 'framework/sweetalert.php';
               <div class="mb-md-5 mt-md-4 pb-5">
 
                 <h2 class="fw-bold mb-2 text-uppercase">Login Page</h2>
-                <p class="text-dark-50 mb-5 text-a mt-3">Welcome to <span class="text-bold">TechX </span>please enter
+                <p class="text-dark-50 mb-5 text-a mt-3">Welcome to <span class="text-bold">Web Comic </span>please
+                  enter
                   your <span class="text-bold">email</span> along with your <span class="text-bold">Password </span>!
                 </p>
                 <form method="POST" id="loginForm">
