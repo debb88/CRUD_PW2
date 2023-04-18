@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   if ($isValid == 1) {
     //Proses Login
-    $queryLogin = $conn->prepare("SELECT username , email, password FROM user WHERE username = ?");
+    $queryLogin = $conn->prepare("SELECT username , email, password FROM user WHERE email = ?");
     $queryLogin->bind_param("s", $email);
     $queryLogin->execute();
     $resLogin = $queryLogin->get_result();
@@ -37,31 +37,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $queryLogin->close();
       } else {
         echo "<script>
-                alert('Cridenial anda salah');
+                alert('Crudenisial anda salah');
                 </script>";
       }
-    } elseif ($numResLogin = 0) {
-      $queryLogin = $conn->prepare("SELECT username, email, password FROM admin WHERE email = ?");
-      $queryLogin->bind_param("s", $email);
-      $queryLogin->execute();
-      $resLogin = $queryLogin->get_result();
-      $numResLogin = $resLogin->num_rows;
-      $rowResLogin = $resLogin->fetch_assoc();
-      $verifPass = password_verify($password, $rowResLogin['password']);
-      if ($verifPass) {
-        $_SESSION['id'] = $rowResLogin['id'];
-        $_SESSION['username'] = $rowResLogin['username'];
-        header("Location: ./index.php?page=admin");
-        $queryLogin->close();
-      } else {
-        echo "<script>
-                alert('Cridenial anda salah');
-                </script>";
-      }
+    // } elseif ($numResLogin = 0) {
+    //   $queryLogin = $conn->prepare("SELECT username, email, password FROM admin WHERE email = ?");
+    //   $queryLogin->bind_param("s", $email);
+    //   $queryLogin->execute();
+    //   $resLogin = $queryLogin->get_result();
+    //   $numResLogin = $resLogin->num_rows;
+    //   $rowResLogin = $resLogin->fetch_assoc();
+    //   $verifPass = password_verify($password, $rowResLogin['password']);
+    //   if ($verifPass) {
+    //     $_SESSION['id'] = $rowResLogin['id'];
+    //     $_SESSION['username'] = $rowResLogin['username'];
+    //     header("Location: ./index.php?page=admin");
+    //     $queryLogin->close();
+    //   } else {
+    //     echo "<script>
+    //             alert('Crudenisial anda salah');
+    //             </script>";
+    //   }
     }
   } else {
     echo "<script>
-            alert('Cridenial anda salah');
+            alert('Crudenisial anda salah');
             </script>";
   }
 }
