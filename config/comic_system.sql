@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 17, 2023 at 09:39 PM
+-- Generation Time: Apr 18, 2023 at 03:22 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.26
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admin` (
   `id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(20) NOT NULL,
   `createdDate` date NOT NULL,
@@ -39,11 +40,11 @@ CREATE TABLE `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id`, `username`, `password`, `createdDate`, `idUploader`) VALUES
-(120, 'M@tthew_001', '12345', '2019-01-20', 89),
-(121, 'J@son_002', '12341', '2020-02-27', 90),
-(122, 'Debor@_003', '12333', '2019-04-19', 91),
-(123, 'AM_004', '13411', '2018-08-11', 92);
+INSERT INTO `admin` (`id`, `email`, `username`, `password`, `createdDate`, `idUploader`) VALUES
+(120, 'matthew001@gmail.com', 'M@tthew_001', '12345', '2019-01-20', 89),
+(121, 'jason002@gmail.com', 'J@son_002', '12341', '2020-02-27', 90),
+(122, 'debora003@gmail.com', 'Debor@_003', '12333', '2019-04-19', 91),
+(123, 'andreasmatt004@gmail.com', 'AM_004', '13411', '2018-08-11', 92);
 
 -- --------------------------------------------------------
 
