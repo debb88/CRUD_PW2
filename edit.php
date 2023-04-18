@@ -4,7 +4,7 @@ require_once 'functions/cleaner.php';
 $comicName = $comicAuthor = $IDUploader = " ";
 $comicNameErr = $comicAuthorErr = $IDUploaderErr = $pictureErr = " ";
 $isValid = 1;
-$save_dir = ' uploads/';
+$save_dir = 'uploads/';
 $picture = " ";
 $comicID = " ";
 if (isset($_GET['id'])) {
