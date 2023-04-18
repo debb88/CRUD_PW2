@@ -2,15 +2,15 @@
 session_start();
 require_once './config/dbcon.php';
 require_once './functions/cleaner.php';
-$username = $password = "";
+$email = $password = "";
 $emailErr = $passwordErr = "";
 $isValid = 1;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  if (empty($_POST['username'])) {
+  if (empty($_POST['email'])) {
     $emailErr = "Mohon isi username";
     $isValid = 0;
   } else {
-    $username = cleaner($_POST['username']);
+    $username = cleaner($_POST['email']);
   }
   if (empty($_POST['password'])) {
     $passwordErr = "Mohon isi password";
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if ($isValid == 1) {
     //Proses Login
     $queryLogin = $conn->prepare("SELECT username , email, password FROM user WHERE username = ?");
-    $queryLogin->bind_param("s", $username);
+    $queryLogin->bind_param("s", $email);
     $queryLogin->execute();
     $resLogin = $queryLogin->get_result();
     $numResLogin = $resLogin->num_rows;
@@ -41,8 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </script>";
       }
     } elseif ($numResLogin = 0) {
-      $queryLogin = $conn->prepare("SELECT username , password FROM admin WHERE username = ?");
-      $queryLogin->bind_param("s", $username);
+      $queryLogin = $conn->prepare("SELECT username, email, password FROM admin WHERE email = ?");
+      $queryLogin->bind_param("s", $email);
       $queryLogin->execute();
       $resLogin = $queryLogin->get_result();
       $numResLogin = $resLogin->num_rows;
